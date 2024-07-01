@@ -1,0 +1,31 @@
+### get all the Contacts
+GET http://localhost:3000/family
+
+###get a specific Contact
+GET http://localhost:3000/family/6681efdc9e19a8ee7f1e5e4c
+
+
+### Create a Contact
+POST http://localhost:3000/family
+content-type: application/json
+
+{ 
+    "Name":"Arturo",
+    "Type":"Granpa",
+    "Age": 38
+}
+
+### Update a user:
+PUT http://localhost:3000/family/668238cc1f0660a62dba4990 HTTP/1.1
+content-type: application/json
+
+{
+    "Name":"Oriela ",
+    "Type":"Granma",
+    "Age":25
+}
+
+###
+DELETE http://localhost:3000/family/668238cc1f0660a62dba4990 HTTP/1.1
+
+
