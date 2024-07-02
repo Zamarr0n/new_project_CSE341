@@ -7,6 +7,7 @@ const URL = `mongodb+srv://emiliozamarrons:${password}@cluster1.lgljyqa.mongodb.
 const client = new mongo.MongoClient(URL);
 
 const getAll = async(req,res) => {
+    //#swagger.tags-['Family']
     const result = await client.db("Family").collection("Family").find()
     result.toArray().then((members) =>{
         res.setHeader('Content-Type', 'application/json');
@@ -15,6 +16,7 @@ const getAll = async(req,res) => {
 }
 
 const getSingle = async(req,res) => {
+    //#swagger.tags-['Family']
     const userId = new Objectid(req.params.id);
     const result = await client.db('Family').collection('Family').find({_id:userId})
     result.toArray().then((members) => {
@@ -24,7 +26,7 @@ const getSingle = async(req,res) => {
 }
 
 const newMember = async (req,res) => {
-
+    //#swagger.tags-['Family']
     const member = {
         Name: req.body.Name,
         Type: req.body.Type,
@@ -40,7 +42,7 @@ const newMember = async (req,res) => {
 }
 
 const updateMember = async(req,res) => {
-    //#swagger.tags-['Users']
+    //#swagger.tags-['Family']
     const userId = new Objectid(req.params.id);
     const user ={
         Name: req.body.Name,
@@ -57,7 +59,7 @@ const updateMember = async(req,res) => {
 }
 
 const deleteMember = async(req,res) => {
-    //#swagger.tags-['Users']
+    //#swagger.tags-['Family']
     const userId = new Objectid(req.params.id);
     const response = await client.db('Family').collection('Family').deleteOne({_id: userId});
     if(response.deleteCount > 0){
